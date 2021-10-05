@@ -1,0 +1,40 @@
+<div class="main-div">
+  <h1 class="todo-list-heading">ADD TODO LIST</h1>
+  <input class="todo-value" [(ngModel)]="todo" />
+  <br />
+  <button class="add-btn" *ngIf="!isEdit" (click)="Add()">ADD</button>
+  <button class="add-btn" *ngIf="isEdit" (click)="Add()">Edit</button>
+
+  <div>
+    <div
+      *ngFor="let x of todoList; let i = index"
+      class="main-container-show col-6 mx-auto"
+    >
+      <div class="container1">
+        <p id="inputField{{ i }}" class="main-para">
+          <!-- <a *ngIf="show">
+            <input [(ngModel)]="todoList[i]" />
+            <button>ADD</button>
+          </a> -->
+          <input
+            type="checkbox"
+            aria-label="Checkbox for following text input"
+            (change)="check()"
+            (click)="checkClickChange()"
+          /><span class="list-show">{{ x }}</span>
+          <span
+            ><button class="update-btn" (click)="Edit(x, i)">Edit</button></span
+          >
+          <span
+            ><button class="delete-btn" (click)="Delete(i)">
+              DELETE
+            </button></span
+          >
+        </p>
+      </div>
+    </div>
+  </div>
+  {{ showStatus > 0 ? "you have task todo" : "congratz you complete" }}
+  <br />
+  {{ value }}
+</div>
