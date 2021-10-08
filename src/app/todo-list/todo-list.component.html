@@ -2,8 +2,8 @@
   <h1 class="todo-list-heading">ADD TODO LIST</h1>
   <input class="todo-value" [(ngModel)]="todo" />
   <br />
-  <button class="add-btn" *ngIf="!isEdit" (click)="Add()">ADD</button>
-  <button class="add-btn" *ngIf="isEdit" (click)="Add()">Edit</button>
+  <button class="add-btn" *ngIf="!isEdit" (click)="add()">ADD</button>
+  <button class="add-btn" *ngIf="isEdit" (click)="add()">Edit</button>
 
   <div>
     <div
@@ -17,16 +17,17 @@
             <button>ADD</button>
           </a> -->
           <input
+            id="{{ i }}"
             type="checkbox"
-            aria-label="Checkbox for following text input"
-            (change)="check()"
-            (click)="checkClickChange()"
+            [checked]="checkbox[i]"
+            [value]="x"
+            (change)="onChange(i, $event)"
           /><span class="list-show">{{ x }}</span>
           <span
             ><button class="update-btn" (click)="Edit(x, i)">Edit</button></span
           >
           <span
-            ><button class="delete-btn" (click)="Delete(i)">
+            ><button class="delete-btn" (click)="Delete(x, i)">
               DELETE
             </button></span
           >
@@ -34,7 +35,7 @@
       </div>
     </div>
   </div>
-  {{ showStatus > 0 ? "you have task todo" : "congratz you complete" }}
+  {{ showStatus > 0 ? "you have" +{showStatus}+ "task todo" : "congratz you
+  complete" }}
   <br />
-  {{ value }}
 </div>

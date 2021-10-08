@@ -1,0 +1,17 @@
+<h1>{{ tittle }}</h1>
+<div>
+  <input type="text" [(ngModel)]="todoTitle" />
+  <button (click)="add()">ADD</button>
+  <div *ngFor="let x of todo; let i = index">
+    <p>
+      <input
+        type="checkbox"
+        [checked]="x.isChecked"
+        [value]="x.id"
+        (change)="onChange($event)"
+      />{{ x.name }}
+    </p>
+    <button (click)="delete(x)">DELETE</button>
+    <button (click)="edit(x, i, $event)">EDIT</button>
+  </div>
+</div>
